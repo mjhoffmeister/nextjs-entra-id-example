@@ -22,9 +22,15 @@ export default function Home() {
       if (accounts.length > 0) {
         setAccount(accounts[0]);
         console.log("User is already logged in");
+      } else {
+        console.log("User is not logged in, initiating login");
+        try {
+          const response = await msalInstance.loginPopup(loginRequest);
+          setAccount(response.account);
+        } catch (e) {
+          console.error(e);
+        }
       }
-      else
-        console.log("User is not logged in");
     };
 
     initializeMsal().catch((e) => {
