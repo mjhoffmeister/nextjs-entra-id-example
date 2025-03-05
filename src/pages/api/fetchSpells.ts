@@ -1,4 +1,3 @@
-// filepath: c:\source\nextjs-entra-id-example\app\nextjs-entra-id-example\src\pages\api\fetchSpells.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import mongoose from 'mongoose';
 import { SpellModel } from '../../models/spellSchema';
