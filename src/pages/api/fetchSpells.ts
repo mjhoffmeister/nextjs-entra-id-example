@@ -4,12 +4,11 @@ import { SpellModel } from '../../models/spellSchema';
 
 const connectToDatabase = async () => {
   if (mongoose.connection.readyState === 0) {
-    mongoose.connect("mongodb+srv://"+process.env.NEXT_PUBLIC_COSMOSDB_HOST+"/"+process.env.NEXT_PUBLIC_COSMOSDB_DBNAME+"?ssl=true", {
+    mongoose.connect("mongodb+srv://"+process.env.NEXT_PUBLIC_COSMOSDB_HOST+"/?tls=true", {
         auth: {
             username: process.env.NEXT_PUBLIC_COSMOSDB_USER,
             password: process.env.NEXT_PUBLIC_COSMOSDB_PASSWORD
-        },
-        retryWrites: false
+        }
     })
     .then(() => console.log('Connection to CosmosDB successful'))
     .catch((err) => console.error(err));
